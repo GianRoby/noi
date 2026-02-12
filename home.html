@@ -17,6 +17,7 @@ const repo = "noi";
 fetch(`https://api.github.com/repos/${user}/${repo}/contents/foto`)
   .then(res => res.json())
   .then(files => {
+    files.sort((a, b) => a.name.localeCompare(b.name));
     const gallery = document.getElementById("gallery");
     files.forEach(file => {
       if(file.name.match(/\.(jpg|jpeg|png|gif)$/i)){ // solo immagini
