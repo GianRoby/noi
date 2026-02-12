@@ -1,0 +1,36 @@
+body {
+  font-family: sans-serif;
+  background: #111;
+  color: white;
+  text-align: center;
+}
+
+.center {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: #1e1e1e;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+input, button {
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  gap: 10px;
+  justify-content: center;
+}
+
+img {
+  width: 200px;
+  border-radius: 10px;
+}
