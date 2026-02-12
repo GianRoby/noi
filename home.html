@@ -2,19 +2,32 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Noi ❤️</title>
+  <title>Le nostre foto ❤️</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
 <h1>Le nostre foto</h1>
+<div class="gallery" id="gallery"></div>
 
-<div class="gallery">
-  <img src="foto/1.jpg">
-  <img src="foto/2.jpg">
-  <img src="foto/3.jpg">
-</div>
+<script>
+// Sostituisci "tuonome" con il tuo username GitHub
+// e "nomerepo" con il nome del repository
+const user = "GianRoby";
+const repo = "noi";
 
+fetch(`https://api.github.com/repos/${user}/${repo}/contents/foto`)
+  .then(res => res.json())
+  .then(files => {
+    const gallery = document.getElementById("gallery");
+    files.forEach(file => {
+      if(file.name.match(/\.(jpg|jpeg|png|gif)$/i)){ // solo immagini
+        const img = document.createElement("img");
+        img.src = file.download_url;
+        gallery.appendChild(img);
+      }
+    });
+  })
+  .catch(err => console.log("Errore caricamento immagini:", err));
+</script>
 </body>
 </html>
